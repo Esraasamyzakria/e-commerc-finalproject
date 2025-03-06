@@ -1,0 +1,32 @@
+
+<a class="flex flex-col items-center  bg-white border border-[#dc7632]/50   mx-auto mt-5 md:flex-row w-[90%]  dark:border-[#dc7632]/50 dark:bg-gray-800 rounded-lg shadow-xl dark:hover:bg-gray-700">
+  <img class="object-cover w-full  rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" [src]="productdetails.imageCover" alt="">
+  <div class="flex flex-col  mx-10 w-full  justify-between leading-normal">
+    <div class="card-body py-4 flex  flex-col justify-between  ">
+      <h4 class="text-[#dc7632]  font-serif  pb-3 text-xl  text-start   capitalize">{{ productdetails.title }}</h4>
+      <p class="font-sm text-black pb-3 text-start ps-5 ">{{ productdetails.description}}</p>
+      <h4 class="text-[#dc7632]  font-serif  pb-3   ps-5 text-start   capitalize">{{ productdetails.category.name }}</h4>
+      <div class="flex justify-between   mt-2 items-center">
+        <span class="text-[#dc7632] ps-5">{{productdetails.price |currency:'EUR'}}</span>
+        <div class="flex items-center">
+          @if (!wishlist.includes(productdetails.id)) {
+            <i (click)="addwishlist(productdetails.id)" class="fa-solid fa-heart  me-3 text-xl "></i>
+          }
+          @else if (wishlist.includes(productdetails.id)) {
+            <i (click)="removewishlist(productdetails.id)" class="fa-solid fa-heart text-red-600  me-3 text-xl "></i>
+          }
+          @for (num of [1,2,3,4,5].slice(productdetails.ratingsAverage); track $index) {
+            <i class="fas fa-star text-yellow-300"></i>
+          }@if (productdetails.ratingsAverage % 1 !==0) {
+            <i class=" fa-solid fa-star-half-stroke text-yellow-300 "></i>
+          }
+
+          <span class=" ps-1">{{productdetails.ratingsAverage}}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button"  (click)="addtocart(productdetails.id)" class="text-white border ms-5 border-[#dc7632] bg-[#dc7632] hover:border-[#dc7632] hover:text-[#dc7632] hover:bg-white focus:ring-1 focus:ring-[#dc7632] font-medium rounded-lg text-sm px-5  py-2 mb-2 mt-5 dark:bg-[#dc7632] dark:hover:bg-[#dc7632] focus:outline-none dark:focus:ring-[#dc7632] w-full block mx-auto">Add To Cart</button>
+
+  </div>
+</a>
+

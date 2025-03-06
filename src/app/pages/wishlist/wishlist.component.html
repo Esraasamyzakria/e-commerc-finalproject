@@ -1,0 +1,30 @@
+
+ <div class=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-10 mt-100">
+ @for (prod of products; track prod.id) {
+  <div class=" hover:shadow-2xl hover:shadow-[#dc7632]  card border border-[#dc7632]/50 rounded-md overflow-hidden shadow relative ">
+    <div >
+      <div  class="card-img">
+        <img [src]="prod.imageCover" class="w-full h-[250px] " [alt]="prod.title" />
+      </div>
+      <div class="card-body px-2 py-4 flex flex-col justify-between ">
+        <h4 class="text-[#dc7632]  font-serif  pb-3 text-xl   text-center  capitalize">{{ prod.category.name }}</h4>
+        <h3 class="font-sm text-black pb-3">{{ prod.title .split(" ",4).join(" ")}}</h3>
+        <div class="flex justify-between items-center">
+          <span class="text-[#dc7632]">{{prod.price |currency:'EUR' }}</span>
+          <div class="flex items-center">
+            @for (num of [1,2,3,4,5].slice(prod.ratingsAverage); track $index) {
+              <i class="fas fa-star text-yellow-300"></i>
+            }@if (prod.ratingsAverage % 1 !==0) {
+              <i class=" fa-solid fa-star-half-stroke text-yellow-300 "></i>
+            }
+            <span class=" ps-1">{{prod.ratingsAverage}}</span>
+          </div>
+          <a   class=" font-medium text-black pe-3 dark:text-[#dc7632] hover:underline"><i (click)="removewishlist(prod.id)" class=" fas fa-trash-can text-[#dc7632]"></i></a>
+
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="addtocart(prod.id)" class="text-white border border-[#dc7632] bg-[#dc7632] hover:border-[#dc7632] hover:text-[#dc7632] hover:bg-white focus:ring-1 focus:ring-[#dc7632] font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-[#dc7632] dark:hover:bg-[#dc7632] focus:outline-none dark:focus:ring-[#dc7632] w-[97%] block mx-auto">Add To Cart</button>
+  </div>
+ }
+</div>

@@ -1,0 +1,66 @@
+
+
+<nav class="bg-white shadow-lg border-gray-200 dark:bg-gray-900 fixed top-0 start-0 end-0   z-50 ">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
+    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="/images/logoooo.jpg" class="h-12 me-2 w-[130px]" alt="Flowbite Logo" />
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div class="hidden flex-grow w-full md:flex md:w-auto" id="navbar-default">
+      @if (islogin()) {
+        <ul class="  capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li>
+            <a  routerLink="/home" routerLinkActive=" bg-[#dc7632] text-white rounded-full  " class="block py-2 px-3  text-[#dc7633]    " aria-current="page">home</a>
+          </li>
+          <li>
+            <a  routerLink="/products" routerLinkActive="   bg-[#dc7632] text-white rounded-full " class="block py-2 px-3  text-[#dc7633]   " aria-current="page">products</a>
+          </li>
+          <li>
+            <a  routerLink="/categories" routerLinkActive="   bg-[#dc7632] text-white rounded-full " class="block py-2 px-3  text-[#dc7633]   " aria-current="page">categories</a>
+          </li>
+          <li>
+            <a  routerLink="/brands" routerLinkActive="    bg-[#dc7632] text-white rounded-full " class="block py-2 px-3  text-[#dc7633]   " aria-current="page">brands</a>
+          </li>
+        </ul>
+      }
+
+      <ul class=" ms-auto  capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a  class="block py-2 px-3   rounded-sm md:bg-transparent   " aria-current="page"><i class=" fab fa-facebook"></i></a>
+        </li>
+        <li>
+          <a class="block py-2 px-3   rounded-sm md:bg-transparent   " aria-current="page"><i class=" fab fa-twitter "></i></a>
+        </li>
+        <li>
+          <a  class="block py-2 px-3   rounded-sm md:bg-transparent   " aria-current="page"><i class="fa-brands fa-linkedin"></i></a>
+        </li>
+        @if (!islogin()) {
+          <li>
+            <a routerLink="/login" routerLinkActive="    bg-[#dc7632] text-white rounded-full " class="block py-2 px-3  text-[#dc7633]    " aria-current="page">login</a>
+          </li>
+          <li>
+            <a routerLink="/register" routerLinkActive="   bg-[#dc7632] text-white rounded-full " class="block py-2 px-3  text-[#dc7633]    " aria-current="page">register</a>
+          </li>
+        }
+        @else {
+          <li class=" flex relative">
+            <a  routerLink="/wishlist" routerLinkActive="  text-red-700    me-3    rounded-full " class="block  px-3 text-4xl   relative  " aria-current="page"><i class="fa-solid fa-heart text-red-700  "></i></a>
+          </li>
+          <li class="flex relative">
+            <a  routerLink="/cart" routerLinkActive="  text-[#dc7632] me-3    rounded-full " class="block  px-3 text-3xl    " aria-current="page"><i class=" fas fa-shopping-cart text-[#dc7632] "></i>
+              <span class=" absolute top-0 start-10 md:end-0 md:top-0 size-5 text-white rounded-md px-3 flex justify-center items-center text-sm bg-[#dc7632]">{{countnumber}}</span></a>
+          </li>
+          <li >
+            <a  role="button" (click)=" logout()" class="block py-2 px-3  border border-[#dc7632]   text-[#dc7633]  rounded-full hover:bg-[#dc7632] hover:text-white  ms-3    " aria-current="page">log out</a>
+
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
